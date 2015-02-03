@@ -88,7 +88,7 @@ var fn = (function() {
       list = list.concat(arr.slice(position+1, arr.length));
       return [elm, list];
     },
-    
+
     // Insert elm at position in array -- 0 based
     insert_at : function(arr, elm, position) {
       var left = arr.slice(0, position);
@@ -141,6 +141,15 @@ var fn = (function() {
         arr_unzipped[1].push(arr[i + 1]);
       }
       return arr_unzipped;
+    },
+
+    zip_with : function(arr1, arr2, callback) {
+      var length = arr1.length >= arr2.length ? arr2.length : arr1.length;
+      var zipped = [];
+      for (var i = 0; i < length; i++) {
+        zipped.push(callback(arr1[i], arr2[i]));
+      }
+      return zipped;
     },
 
     /*
