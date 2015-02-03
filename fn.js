@@ -23,6 +23,7 @@ var fn = (function() {
       return arr[arr.length-1];
     },
 
+    // Returns first element in an array.
     first : function(arr) {
       return arr[0];
     },
@@ -55,7 +56,7 @@ var fn = (function() {
       return a;
     },
 
-
+    // take n elements
     take : function(arr, count) {
       count = count < arr.length ? count : arr.length;
       var a = [];
@@ -65,6 +66,7 @@ var fn = (function() {
       return a;
     },
 
+    // Takes while predicate is true
     take_while : function(arr, callback) {
       var a = [];
       for (var i = 0; i < arr.length; i++) {
@@ -76,7 +78,8 @@ var fn = (function() {
       }
       return a;
     },
-    // removes the nth element from the array
+
+    // Removes the nth element from the array -- 0 based
     // returns an array with the removed element
     // and the new array sans element
     remove_at : function(arr, position) {
@@ -84,6 +87,41 @@ var fn = (function() {
       var list = Array.prototype.concat(arr.slice(0, position));
       list = list.concat(arr.slice(position+1, arr.length));
       return [elm, list];
+    },
+    
+    // Insert elm at position in array -- 0 based
+    insert_at : function(arr, elm, position) {
+      var left = arr.slice(0, position);
+      var right = arr.slice(position, arr.length);
+      return Array.prototype.concat(left, elm, right);
+    },
+
+    //
+    range : function(start, end, step) {
+      switch(arguments.length) {
+        case 1:
+          end = arguments[0],
+          start = 0,
+          step = 1;
+          break;
+        case 2:
+          step = 1;
+          break;
+        case 3:
+          if (step === 0) { return undefined; }
+          break;
+      }
+      var arr = [];
+      if (step < 0) {
+        for (var i = start; i > end; i += step) {
+          arr.push(i);
+        }
+      } else {
+        for (var i = start; i < end; i += step) {
+          arr.push(i);
+        }
+      }
+      return arr;
     },
 
     flatten : function(arr) {
