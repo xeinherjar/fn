@@ -128,7 +128,7 @@ var fn = (function() {
       var length = arr1.length >= arr2.length ? arr2.length : arr1.length;
       var arr_zipped = [];
       for (var i = 0; i < length; i++) {
-        arr_zipped.push([arr1[i], arr2[i]]);
+        arr_zipped.push(arr1[i], arr2[i]);
       }
       return arr_zipped;
     },

@@ -2,8 +2,19 @@
 <html>
   <head>
     <title>FN</title>
+    <link rel="stylesheet" href="bower_components/mocha/mocha.css" />
   </head>
   <body>
+    <div id="mocha">
+      <p><a href=".">Index</a></p>
+    </div>
+    <div id="messages"></div>
+    <div id="fixtures"></div>
+    <script src="bower_components/mocha/mocha.js"></script>
+    <script src="bower_components/chai/chai.js"></script>
     <script src="fn.js"></script>
+    <script>mocha.setup('bdd');</script>
+    <script src="_fn_test.js"></script>
+    <script>mocha.run();</script>
   </body>
 </html>
