@@ -2,6 +2,14 @@
 
 A small JS library to make my life a little easier.
 
+---
+Test are written in mocha and chai.
+
+To run the test:
+- bower install
+- open index.html
+
+
 ### first
 ``` JavaScript
 fn.first([9,8,7]);
