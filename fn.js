@@ -1,3 +1,48 @@
+(function(fn) {
+  'use strict';
+
+
+  // Returns first element in an array.
+  fn.first = fn.head = function(arr) {
+    return arr[0];
+  };
+
+  // Returns last element in an array.
+  fn.last = function(arr) {
+    return arr[arr.length-1];
+  };
+
+  fn.tail = function(arr) {
+    if (arr.length === 0) return undefined;
+    return arr.slice(1);
+  };
+
+  fn.zip = function(arr1, arr2) {
+    var length = arr1.length >= arr2.length ? arr2.length : arr1.length;
+    var arr_zipped = [];
+    for (var i = 0; i < length; i++) {
+      arr_zipped.push(arr1[i], arr2[i]);
+    }
+    return arr_zipped;
+  };
+
+  fn.unzip = function(arr) {
+    var arr_unzipped = [[], []];
+    var length = arr.length % 2 === 0 ? arr.length : arr.length - 1;
+    for (var i = 0; i < length; i += 2) {
+      arr_unzipped[0].push(arr[i]);
+      arr_unzipped[1].push(arr[i + 1]);
+    }
+    return arr_unzipped;
+  };
+
+  return fn;
+
+})(window.fn = window.fn || {});
+
+
+
+/*
 var fn = (function() {
   return {
     // Returns a function that can only be called once
@@ -16,16 +61,6 @@ var fn = (function() {
       return function(y) {
         return f(x, y);
       };
-    },
-
-    // Returns last element in an array.
-    last : function(arr) {
-      return arr[arr.length-1];
-    },
-
-    // Returns first element in an array.
-    first : function(arr) {
-      return arr[0];
     },
 
     map : function(arr, callback) {
@@ -124,24 +159,8 @@ var fn = (function() {
       return arr;
     },
 
-    zip : function(arr1, arr2) {
-      var length = arr1.length >= arr2.length ? arr2.length : arr1.length;
-      var arr_zipped = [];
-      for (var i = 0; i < length; i++) {
-        arr_zipped.push(arr1[i], arr2[i]);
-      }
-      return arr_zipped;
-    },
 
-    unzip : function(arr) {
-      var arr_unzipped = [[], []];
-      var length = arr.length % 2 === 0 ? arr.length : arr.length - 1;
-      for (var i = 0; i < length; i += 2) {
-        arr_unzipped[0].push(arr[i]);
-        arr_unzipped[1].push(arr[i + 1]);
-      }
-      return arr_unzipped;
-    },
+
 
     zip_with : function(arr1, arr2, callback) {
       var length = arr1.length >= arr2.length ? arr2.length : arr1.length;
@@ -152,14 +171,15 @@ var fn = (function() {
       return zipped;
     },
 
-    /*
+
     flatten : function(arr) {
       var acc = [];
       for (var i = 0; i < arr.length; i++) {
 
       }
       return acc;
-    }, */
+    },
 
   }
 }());
+*/
