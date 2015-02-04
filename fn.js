@@ -1,3 +1,5 @@
+/* jslint browser: true */
+
 (function(fn) {
   'use strict';
 
