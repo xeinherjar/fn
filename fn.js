@@ -17,6 +17,16 @@
     return arr.slice(1);
   };
 
+  fn.unzip = function(arr) {
+    var arr_unzipped = [[], []];
+    var length = arr.length % 2 === 0 ? arr.length : arr.length - 1;
+    for (var i = 0; i < length; i += 2) {
+      arr_unzipped[0].push(arr[i]);
+      arr_unzipped[1].push(arr[i + 1]);
+    }
+    return arr_unzipped;
+  };
+
   fn.zip = function(arr1, arr2) {
     var length = arr1.length >= arr2.length ? arr2.length : arr1.length;
     var arr_zipped = [];
@@ -26,14 +36,13 @@
     return arr_zipped;
   };
 
-  fn.unzip = function(arr) {
-    var arr_unzipped = [[], []];
-    var length = arr.length % 2 === 0 ? arr.length : arr.length - 1;
-    for (var i = 0; i < length; i += 2) {
-      arr_unzipped[0].push(arr[i]);
-      arr_unzipped[1].push(arr[i + 1]);
+  fn.zipWith = function(arr1, arr2, callback) {
+    var length = arr1.length >= arr2.length ? arr2.length : arr1.length;
+    var zipped = [];
+    for (var i = 0; i < length; i++) {
+      zipped.push(callback(arr1[i], arr2[i]));
     }
-    return arr_unzipped;
+    return zipped;
   };
 
   return fn;
@@ -161,15 +170,6 @@ var fn = (function() {
 
 
 
-
-    zip_with : function(arr1, arr2, callback) {
-      var length = arr1.length >= arr2.length ? arr2.length : arr1.length;
-      var zipped = [];
-      for (var i = 0; i < length; i++) {
-        zipped.push(callback(arr1[i], arr2[i]));
-      }
-      return zipped;
-    },
 
 
     flatten : function(arr) {
